@@ -1,9 +1,11 @@
 "use client";
+import Hero from "@/components/Hero/Hero";
 import LoadingSuspense from "@/components/Loading/Loading";
+import { fetchCategory } from "@/utils/fetch";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Home() {
   const { status } = useSession();
@@ -13,7 +15,7 @@ export default function Home() {
     if (status === "authenticated") {
       return (
         <button
-          className="border border-solid border-black rounded"
+          className="bg-transparent border border-solid border-black rounded"
           onClick={() => {
             signOut({ redirect: false }).then(() => {
               router.push("/");
@@ -29,19 +31,22 @@ export default function Home() {
       return (
         <Link
           href="/login"
-          className="border border-solid border-black rounded"
+          className="bg-transparent border border-solid border-black rounded"
         >
           Sign In
         </Link>
       );
     }
   };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
-      <Suspense fallback={<LoadingSuspense />}>
-        <h1 className="text-xl">Home</h1>
-        {showSession()}
-      </Suspense>
-    </main>
+    <>
+      <div>
+        <Hero />
+        <div className="bg-gradient-to-b h-screen from-[#030712] via-[#0C0D24]">
+          {showSession()}
+        </div>
+      </div>
+    </>
   );
 }

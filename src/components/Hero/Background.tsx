@@ -7,10 +7,9 @@ export default function Background({ imageSrc }: { imageSrc: string }) {
       <div className="-z-50 transition-[width] duration-1000 ease-linear">
         <Image
           src={`https://image.tmdb.org/t/p/original/${imageSrc}`}
-          objectFit="cover"
-          objectPosition="top"
-          layout="fill"
+          style={{ objectFit: "cover", objectPosition: "top" }}
           alt=""
+          fill={true}
           className="-z-50"
         />
       </div>
