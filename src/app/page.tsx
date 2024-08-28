@@ -1,7 +1,9 @@
 "use client";
+import LoadingSuspense from "@/components/Loading/Loading";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Suspense } from "react";
 
 export default function Home() {
   const { status } = useSession();
@@ -16,16 +18,13 @@ export default function Home() {
             signOut({ redirect: false }).then(() => {
               router.push("/");
             });
-
           }}
         >
           Sign Out
         </button>
-      )
+      );
     } else if (status === "loading") {
-      return (
-        <span className="text-[#888] text-sm mt-7">Loading...</span>
-      )
+      return <span className="text-[#888] text-sm mt-7">Loading...</span>;
     } else {
       return (
         <Link
@@ -34,13 +33,15 @@ export default function Home() {
         >
           Sign In
         </Link>
-      )
+      );
     }
-  }
+  };
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-xl">Home</h1>
-      {showSession()}
+      <Suspense fallback={<LoadingSuspense />}>
+        <h1 className="text-xl">Home</h1>
+        {showSession()}
+      </Suspense>
     </main>
   );
 }
