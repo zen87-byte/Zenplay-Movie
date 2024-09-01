@@ -1,4 +1,5 @@
 "use client";
+import HeroCarousel from "@/components/Hero/HeroCarousel";
 import Hero from "@/components/Hero/Hero";
 import LoadingSuspense from "@/components/Loading/Loading";
 import { fetchCategory } from "@/utils/fetch";
@@ -41,9 +42,9 @@ export default function Home() {
 
   return (
     <>
-      <div>
-        <Hero />
-        <div className="bg-gradient-to-b h-screen from-[#030712] via-[#0C0D24]">
+      <div className="-z-50">
+        <Hero/>
+        <div>
           {showSession()}
         </div>
       </div>

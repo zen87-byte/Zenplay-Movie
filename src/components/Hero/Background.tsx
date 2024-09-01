@@ -11,6 +11,7 @@ export default function Background({ imageSrc }: { imageSrc: string }) {
           alt=""
           fill={true}
           className="-z-50"
+          priority
         />
       </div>
       <div className="absolute -z-10 w-1/3 w-full h-full left-0 bottom-0 bg-gradient-to-t from-[#030712] to-60%" />
