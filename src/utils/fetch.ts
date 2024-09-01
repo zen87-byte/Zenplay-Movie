@@ -22,7 +22,7 @@ export const fetchOptions = {
 
 export async function fetchCategory(endpoint: string) {
   const res = await fetch(
-    `${process.env.REACT_APP_BASE_URL}/${endpoint}`,
+    `https://api.themoviedb.org/3/${endpoint}`,
     fetchOptions
   );
   return res.json();
