@@ -18,9 +18,9 @@ const menuList: string[] = [
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
-  console.log(pathname)
   const isHome: string = "/";
   const { data: session } = useSession();
+  
   return (
     <nav
       className={`${

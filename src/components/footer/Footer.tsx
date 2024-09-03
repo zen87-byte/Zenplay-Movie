@@ -46,7 +46,6 @@ const Footer = () => {
                   © 2023 Zenplay and Related Entities
                 </button>
               </div>
-              <div>Get it On PlayStore</div>
             </div>
           </div>
         </div>
